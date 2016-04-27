@@ -22,7 +22,7 @@ public class FontTest extends ApplicationAdapter {
 	TextButton.TextButtonStyle buttonStyle;
 	TextButton button;
 	Skin skin;
-	BitmapFont textFont,textFontSmall;
+	BitmapFont textFont,textFontSmall,textFontSmallest;
 	Stage stage;
 
 // I put the all the lines to create the fonts into a method, that can be called from create function
@@ -44,6 +44,12 @@ public class FontTest extends ApplicationAdapter {
 		// while the size is being change
 		parameter.size=18;
 		textFontSmall= generator.generateFont(parameter);
+		parameter.size= 10;
+		parameter.color= Color.CORAL;
+		parameter.shadowColor= Color.LIGHT_GRAY;
+		parameter.shadowOffsetX=5;
+		parameter.shadowOffsetY=2;
+		textFontSmallest= generator.generateFont(parameter);
 		generator.dispose();
 	}
 
@@ -68,7 +74,7 @@ public class FontTest extends ApplicationAdapter {
 		button.addListener(new InputListener(){
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				System.out.println("Does This Thing Really Work!!!");
+				System.out.println("Wow Wee, You clicked a Button ☺ !");
 
 				return true;
 			}
@@ -83,7 +89,8 @@ public class FontTest extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		textFontSmall.draw(batch,"Into the woods",100,100);
+		textFontSmall.draw(batch,"Into the Tree",100,100);
+		textFontSmallest.draw(batch,"Into the bush",100,75);
 		batch.end();
 		stage.draw();
 	}
